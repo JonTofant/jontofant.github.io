@@ -4,8 +4,8 @@
  /* border-style: dashed; */
  display: flex;
  justify-content: center;
-  margin-top: 80px;
-  margin-bottom: 300px;
+  margin-top: 5%;
+  margin-bottom: 10%;
   align-items: center;
 
 }
@@ -35,10 +35,10 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 20%;
 }
 .ProjectHelenaVideo{
-  width: 80%;
+  width: 70%;
   border-radius: 50px;
 }
 .text{

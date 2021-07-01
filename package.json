@@ -1,0 +1,22 @@
+{
+  "name": "jontofant.github.io",
+  "version": "1.0.0",
+  "description": "Portfolio Website",
+  "main": "index.js",
+  "scripts": {
+      "compile-sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonTofant/jontofant.github.io.git"
+  },
+  "author": "Jon Tofant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonTofant/jontofant.github.io/issues"
+  },
+  "homepage": "https://github.com/JonTofant/jontofant.github.io#readme",
+  "devDependencies": {
+    "node-sass": "^6.0.1"
+  }
+}

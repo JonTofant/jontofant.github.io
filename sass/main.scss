@@ -28,6 +28,14 @@ body{
     padding: 0;
 }
 
+.sectionTitle{
+    font-family: $fontRoboto;
+    font-weight: 500;
+    font-size: 2rem;
+    color: $colorParagraph;
+    text-align: center;
+}
+
 /*************/
 /* hero shot */
 /*************/
@@ -108,16 +116,34 @@ a{
     border-bottom:1px solid $colorParagraph;
 }
 
-li{
-    margin-top: 2rem;
-}
 
 .pages{
     padding:1rem;
+
+    li{
+        margin-top: 2rem;
+    }
 }
 
 .quote{
     grid-area: quote;
+    display:grid;
+    place-items: center;
+    margin-top: -30vh;
+    li{
+        margin-top: 1rem;
+    }
+}
+
+/********************/
+/* Projects section */
+/********************/
+
+.circle{
+    width: 100vw;
+    height: 100vw;
+    border-radius: 50%;
+    background:$colorGreen1;
     display:grid;
     place-items: center;
 }

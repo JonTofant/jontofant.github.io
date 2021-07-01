@@ -23,6 +23,13 @@ body {
   margin: 0;
   padding: 0; }
 
+.sectionTitle {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #362E38;
+  text-align: center; }
+
 /*************/
 /* hero shot */
 /*************/
@@ -89,13 +96,26 @@ a {
   font-weight: 300;
   border-bottom: 1px solid #362E38; }
 
-li {
-  margin-top: 2rem; }
-
 .pages {
   padding: 1rem; }
+  .pages li {
+    margin-top: 2rem; }
 
 .quote {
   grid-area: quote;
+  display: grid;
+  place-items: center;
+  margin-top: -30vh; }
+  .quote li {
+    margin-top: 1rem; }
+
+/********************/
+/* Projects section */
+/********************/
+.circle {
+  width: 100vw;
+  height: 100vw;
+  border-radius: 50%;
+  background: #D0E37F;
   display: grid;
   place-items: center; }

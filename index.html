@@ -4,60 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jon Tofant</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<!-- - - - - - - - - - - - -->
+<!-- Hero shot (main page) -->
+<!-- - - - - - - - - - - - -->
+<section class="heroShot">
+
     <header>
-        <div class="logo">
-            <div class="logoElement">Print("</div>
-            <div class="logoElement logoUnderline">Logo</div>
-            <div class="logoElement">");</div>
-        </div>
-        <nav>
-            <ul class="navLinks">
-                <li><a href="pages/Contact.html">Contact</a></li>
-                <li><a href="pages/projects.html">Projects</a></li>
-                <li><a href="pages/about.html">About</a></li>
+
+        <section class="navBar">
+            <div class="name">JON TOFANT</div>
+            <ul class="pages">
+                <li><a class="links" href="#">My work</a></li>
+                <li><a class="links" href="#">My skills</a></li>
+                <li><a class="links" href="#">Hire me</a></li>
             </ul>
-        </nav>
-    </header>
-
-    <section class="previewMe">
-        <div class="profilePictureContainer">
-            <img class="profilePicture" src="resources/profilePicture.jpg" alt="Picture of me">
-        </div> 
-        <div class="messageBubbleContainer">
-            <div class="messageBubble paragraph">
-
-                    Hey! 
-                <br>I like to code! 
-                <br>I admire Bitcoin
-                <br>My favourite book is The name of the Wind
-                <br>#LaserRayUntil100k
-
-            </div>
-        </div>
-    </section>
-
-    <section class="projectsContainer">
-        <div class="projectSectionTitle">Check out some of my projects</div>
-
-        <section class="projectCardGrid">
-            <button onclick="window.location.href='https://github.com/JonTofant/VIMproved-happiness'" class="projectCard">
-                <img class="photo" src="resources/vimrc.svg" alt="My Vim setup">
-            </button>
-            <button class="projectCard">
-                <img src="resources/projectPlant.svg" alt="Project plant" class="photo">
-            </button>
-            <button  onclick="window.location.href='https://jon-tofant.gitbook.io/project-hypervisor/'" class="projectCard">
-                <img src="resources/projectHypervisor.svg" alt="Project Hypervisor" class="photo">
-            </button>
         </section>
 
+    </header>
+
+    <section class="socialMedia">
+        <a href="#"><img width="48px" height="47px" src="assets/twitter.svg" alt="Twitter"></a>
+        <a href="#"><img width="48px" height="47px" src="assets/github.svg" alt="Github"></a>
+        <a href="#"><img width="48px" height="47px" src="assets/instagram.svg" alt="Instagram"></a>
     </section>
 
-   <script src="main.js"></script>
+    <div class="quote">
+        <ul>
+            <li>Passion for learning</li>
+            <li>Admiration for bitcoin</li>
+            <li>No limit to my conquest</li>
+            <li>#lasserrayuntil100k</li>
+        </ul>
+    </div>
+
+    
+</section>
+
+    <img class="blockDecorationDesktop" src="assets/blocks.svg" alt="decorative image">
+    <img class="blockDecorationTablet" src="assets/blocksTablet.svg" alt="decorative image">
+    <img class="blockDecorationMobile" src="assets/blocksMobile.svg" alt="decorative image">
+
+<!-- - - - - - - - - - -->
+<!-- Projects section  -->
+<!-- - - - - - - - - - -->
+<section class="projects">
+
+    <section class="projectsHeader">
+        <div class="circle">
+            <p class="sectionTitle" >Check out some of my projects</p>
+        </div>
+        <div class="quote2">
+            <p>Out of the mountain of despair, a stone of hope</p>
+        </div>
+    </section>
+
+    <section class="projectsGrid">
+        <div class="projectCard">card 1</div>
+        <div class="projectCard">card 2</div>
+        <div class="projectCard">card 3</div>
+        <div class="projectCard">card 4</div>
+    </section>
+
+</section>
+
+<!-- - - - - - - - - -->
+<!-- Skills section  -->
+<!-- - - - - - - - - -->
+<section class="skills">
+
+    <section class="skillsGrid">
+        <div class="circle">
+            <p class="sectionTitle" class="sectionTitle" >Check out some of my skills</p>
+        </div>
+        <section class="webDev"></section>
+        <section class="otherLang"></section>
+    </section>
+
+</section>
+
+<!-- - - - - - - - - - - -->
+<!-- atributions section -->
+<!-- - - - - - - - - - - -->
+<section class="atributions">
+    <div class="circle">
+        <p class="sectionTitle" >Atributions</p>
+    </div>
+
+    <ul>
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Facilis adipisci libero ducimus consequatur.</li>
+        <li>At fugit eaque eos nobis?</li>
+        <li>Ut deleniti maxime illum voluptate.</li>
+    </ul>
+
+</section>
 
 </body>
 </html>

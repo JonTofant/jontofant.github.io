@@ -1,0 +1,121 @@
+/**********************************************/
+/*              /\             /\             */
+/*             |`\\_,--="=--,_//`|            */
+/*             \ ."  :'. .':  ". /            */
+/*            ==)  _ :  '  : _  (==           */
+/*              |>/O\   _   /O\<|             */
+/*              | \-"~` _ `~"-/ |   jgs       */
+/*             >|`===. \_/ .===`|<            */
+/*       .-"-.   \==='  |  '===/   .-"-.      */
+/* .----{'. '`}---\,  .-'-.  ,/---{.'. '}---. */
+/*  )   `"---"`     `~-===-~`     `"---"`  (  */
+/* (  Portfolio website made by Jon Tofant  ) */
+/*  )                                      (  */
+/* '----------------------------------------' */
+/**********************************************/
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;500&display=swap");
+/*fonts*/
+/*global configuration*/
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.sectionTitle {
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #362E38;
+  text-align: center; }
+
+/*************/
+/* hero shot */
+/*************/
+.blockDecorationDesktop {
+  display: none; }
+
+.blockDecorationTablet {
+  display: none; }
+
+.blockDecorationMobile {
+  position: absolute;
+  right: 3.51px;
+  float: right;
+  top: 30vh; }
+
+.heroShot {
+  height: 100vh;
+  display: grid;
+  margin-right: 0px;
+  grid-template-columns: 1fr auto;
+  grid-auto-rows: auto;
+  grid-template-areas: "header social" "links social" "quote quote"; }
+
+header {
+  margin: 0;
+  padding: 0;
+  height: 70vh;
+  background: #DDB967;
+  border-bottom-right-radius: 30px; }
+
+.name {
+  grid-area: header;
+  background: #D9B359;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  padding: 1rem;
+  font-size: 2rem; }
+
+.socialMedia {
+  grid-area: social;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  height: 35vh;
+  max-width: 300px;
+  padding: 1rem; }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300; }
+
+a {
+  text-decoration: none; }
+
+.links {
+  text-decoration: none;
+  color: #362E38;
+  font-size: 1.5rem;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+  border-bottom: 1px solid #362E38; }
+
+.pages {
+  padding: 1rem; }
+  .pages li {
+    margin-top: 2rem; }
+
+.quote {
+  grid-area: quote;
+  display: grid;
+  place-items: center;
+  margin-top: -30vh; }
+  .quote li {
+    margin-top: 1rem; }
+
+/********************/
+/* Projects section */
+/********************/
+.circle {
+  width: 100vw;
+  height: 100vw;
+  border-radius: 50%;
+  background: #D0E37F;
+  display: grid;
+  place-items: center; }

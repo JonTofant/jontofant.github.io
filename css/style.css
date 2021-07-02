@@ -41,7 +41,7 @@ body {
 
 .blockDecorationMobile {
   position: absolute;
-  right: 3.51px;
+  right: 3.49px;
   float: right;
   top: 30vh; }
 
@@ -76,7 +76,8 @@ header {
   justify-content: space-between;
   height: 35vh;
   max-width: 300px;
-  padding: 1rem; }
+  padding: 1rem;
+  z-index: 1; }
 
 ul {
   list-style-type: none;

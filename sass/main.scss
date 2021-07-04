@@ -32,6 +32,7 @@ body{
 
 .sectionTitle{
     font-family: $fontRoboto;
+    padding:1rem;
     font-weight: 500;
     font-size: 2rem;
     color: $colorParagraph;
@@ -135,6 +136,10 @@ a{
     place-items:center;
 }
 
+.projectCard{
+    padding:1rem;
+}
+
 .circle{
     width: 90vw;
     height: 90vw;
@@ -188,15 +193,7 @@ a{
     min-width:200px;
     grid-row:4/span 8;
     grid-column:1;
-    border-bottom-left-radius:40px;
-    border-bottom-right-radius:40px;
-}
-
-.backgroundTriangle{
-    grid-column:1;
-    grid-row:3/span 2;
-    margin-top:2.4rem;
-    z-index: -1;
+    border-radius:10px 10px 40px 40px;
 }
 
 /******************/
@@ -214,6 +211,9 @@ a{
     min-width:40%;
     margin:25px;
     padding:1rem;
+    text-align:center;
+    font-family:$fontRoboto;
+    font-weight:300;
 }
 
 .langTitle{
@@ -237,3 +237,57 @@ a{
     justify-content:center;
     align-items:center;
 }
+
+/***************/
+/* Atributions */
+/***************/
+
+.atributions{
+    display: grid;
+    place-items: center;
+    li{
+        font-family: $fontRoboto;
+        margin:1rem;
+    }
+}
+
+/*****************************************/
+/* Optimisation for medium sized screens */
+/*****************************************/
+
+@media only screen and (min-width: 500px) {
+
+    .heroShot{
+        display: grid;
+        margin: 0;
+        padding: 0;
+        grid-template-columns: 1fr 10% 10% 10%;
+        grid-auto-rows:auto;
+    }
+
+    .socialMedia{
+        grid-column:4 / span 1;
+        grid-row: 1/span 2;
+    }
+
+    .navBar{
+        grid-column:1 /span 3;
+        grid-row:1/span 1;
+        display:flex;
+        align-items: center;
+        justify-content:space-between;
+        background: $colorBrown1;
+        li{
+            display:inline;
+            margin-right:2rem;
+        }
+        .links{
+            font-size:1rem;
+        }
+    }
+
+    .quote{
+        grid-column:1 /span 3;
+        grid-row:2/span 2;
+    }
+} 

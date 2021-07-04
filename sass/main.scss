@@ -216,12 +216,22 @@ a{
     padding:1rem;
 }
 
+.langTitle{
+    position: relative;
+    top:-0.7rem;
+    background:white;
+    padding: 0 1rem 0 1rem;
+    font-family:$fontRoboto;
+    font-weight:300;
+
+}
 
 .showcase{
     border:2px solid black;
     border-radius:$cardRadius;
     width:80%;
     margin-top:2rem;
+    margin-bottom:2rem;
     display:flex;
     flex-direction:column;
     justify-content:center;

@@ -156,15 +156,20 @@ a {
   width: 100%;
   z-index: -1;
   min-width: 200px;
-  grid-row: 4/span 8;
+  grid-row: 5/span 8;
   grid-column: 1;
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px; }
 
-.backgroundTriangle {
+.background2 {
+  background-image: url("../assets/decorationSlopeMobile.svg");
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
   grid-column: 1;
-  grid-row: 3/span 2;
-  margin-top: 2.4rem;
+  grid-row: 3/span 3;
+  width: 100%;
+  height: 100%;
   z-index: -1; }
 
 /******************/
@@ -199,3 +204,10 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
+
+/***************/
+/* Atributions */
+/***************/
+.atributions {
+  display: grid;
+  place-items: center; }

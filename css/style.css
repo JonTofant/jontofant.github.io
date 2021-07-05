@@ -25,6 +25,9 @@ body {
   padding: 0;
   width: 100%; }
 
+.tabletBlocks {
+  display: none; }
+
 .sectionTitle {
   font-family: "Roboto Mono", monospace;
   padding: 1rem;
@@ -214,18 +217,21 @@ a {
 /* Optimisation for medium sized screens */
 /*****************************************/
 @media only screen and (min-width: 500px) {
+  /************/
+  /* Heroshot */
+  /************/
   .heroShot {
     display: grid;
     margin: 0;
     padding: 0;
     grid-template-columns: 1fr 10% 10% 10%;
-    grid-auto-rows: auto; }
+    grid-auto-rows: minmax(1fr, auto); }
   .socialMedia {
     grid-column: 4 / span 1;
-    grid-row: 1/span 2; }
+    grid-row: 1/span 5; }
   .navBar {
     grid-column: 1 /span 3;
-    grid-row: 1/span 1;
+    grid-row: 1/span 2;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -235,6 +241,48 @@ a {
       margin-right: 2rem; }
     .navBar .links {
       font-size: 1rem; }
+    .navBar .name {
+      padding-left: 2rem; }
   .quote {
     grid-column: 1 /span 3;
-    grid-row: 2/span 2; } }
+    grid-row: 3/span 10;
+    align-items: flex-start;
+    font-size: 1.7rem;
+    color: #362E38;
+    padding-left: 2rem; }
+  .tabletBlocks {
+    display: block;
+    z-index: 1;
+    grid-column: 2 / span 3;
+    grid-row: 6/span 6;
+    width: 100%; }
+  /*******************/
+  /* Project section */
+  /*******************/
+  .projects {
+    display: grid;
+    grid-auto-rows: minmax(1fr, auto);
+    grid-template-columns: 1fr 1fr; }
+  .circle {
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    width: 30vw;
+    height: 30vw;
+    grid-row: 1;
+    grid-column: 1; }
+  .quote2 {
+    grid-row: 1;
+    grid-column: 2; }
+  .cardOne {
+    grid-row: 2;
+    grid-column: 1; }
+  .cardTwo {
+    grid-row: 2 /span 1;
+    grid-column: 2; }
+  .cardThree {
+    grid-column: 1;
+    grid-row: 3 /span 1; }
+  .background {
+    grid-row: 3/span 2;
+    grid-column: 1/span 2; } }

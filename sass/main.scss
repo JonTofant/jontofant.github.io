@@ -268,7 +268,7 @@ a{
 /* Optimisation for medium sized screens */
 /*****************************************/
 
-@media only screen and (min-width: 500px) {
+@media only screen and (min-width: 640px) {
 
     /************/
     /* Heroshot */
@@ -423,7 +423,7 @@ a{
         margin-top:2rem;
         margin-bottom:2rem;
         display:grid;
-        grid-template-columns:1fr 1fr 1fr 1fr ;
+        grid-template-columns:20% 20% 20% 20%;
         grid-template-rows:100%;
         justify-content:space-between;
         align-items:center;
@@ -435,11 +435,12 @@ a{
 
     .skill{
         display:flex;
+        font-size:0.9rem;
         flex-direction: column;
         justify-content: center;
         align-items:center;
         margin:0;
-        padding: 3rem;
+        padding: auto;
         grid-row: 1;
         img{
             width:3rem;

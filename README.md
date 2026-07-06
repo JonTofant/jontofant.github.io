@@ -1,9 +1,31 @@
 # jontofant.github.io
-Portfolio Website
-Fonts https://fonts.google.com/specimen/Roboto+Mono
-Color pallet https://coolors.co/221d23-4f3824-d1603d-ddb967-d0e37f
-Attributions
-<a href="https://iconscout.com/icons/python" target="_blank">Python Icon</a> on <a href="https://iconscout.com">Iconscout</a>
-<a href="https://iconscout.com/icons/vim" target="_blank">Vim Icon</a> by <a href="https://iconscout.com/contributors/icon-54" target="_blank">Icon 54</a>
-<a href="https://iconscout.com/icons/excel" target="_blank">Excel Logo Icon</a> by <a href="https://iconscout.com/contributors/icon-54" target="_blank">Icon 54</a>
-<a href="https://iconscout.com/icons/c" target="_blank">C Icon</a> by <a href="https://iconscout.com/contributors/ravindra-kalkani" target="_blank">Ravindra Kalkani</a>
+
+Personal/academic site of Jon Tofant — PhD researcher in Automation & Robotics
+at FERI, University of Maribor. Hybrid RL + classical control for wheeled-biped
+robots.
+
+Plain HTML, CSS and JavaScript. No framework, no build step, no dependencies.
+Deployed via GitHub Pages from `main`.
+
+## Structure
+
+```
+index.html        — the whole site (single page)
+css/style.css     — all styling
+js/pendulum.js    — hero simulation: cart-pole + full-state feedback (240 Hz)
+js/watering.js    — playground simulation: soil-moisture PID loop
+js/main.js        — nav toggle, footer year
+assets/img/       — photos & renders
+```
+
+## Editing
+
+Everything is hand-editable. To add a publication, edit the `#publications`
+list in `index.html`. Simulation physics and default gains live at the top of
+the respective `js/*.js` files.
+
+To preview locally, serve the folder with any static server, e.g.:
+
+```
+python -m http.server 8000
+```

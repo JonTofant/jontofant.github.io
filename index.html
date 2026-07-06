@@ -1,114 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jon Tofant</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jon Tofant — Robots that refuse to fall over</title>
+  <meta name="description" content="Jon Tofant is a PhD researcher in Automation and Robotics at FERI, University of Maribor, combining reinforcement learning with classical control for wheeled-biped robots. This page contains real, interactive control-loop simulations. Push the robot.">
+  <meta name="author" content="Jon Tofant">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Jon Tofant — Robots that refuse to fall over">
+  <meta property="og:description" content="Hybrid RL + classical control for wheeled-biped robots. The hero of this site is a live inverted-pendulum simulation running a real state-feedback controller. Push it.">
+  <meta property="og:url" content="https://jontofant.github.io/">
+  <meta property="og:image" content="https://jontofant.github.io/assets/img/biped-hardware.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='24' r='6' fill='%23f6a821'/%3E%3Crect x='14.2' y='2' width='3.6' height='18' rx='1.8' transform='rotate(12 16 24)' fill='%23e8edf2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- - - - - - - - - - - - -->
-<!-- Hero shot (main page) -->
-<!-- - - - - - - - - - - - -->
-<section class="heroShot">
-
-    <img class="tabletBlocks" src="assets/blocksTablet.svg" alt="decorative blocks">
-
-        <section class="navBar">
-            <div class="name">JON TOFANT</div>
-            <ul class="pages">
-                <li><a class="links" href="#projectsLink">My work</a></li>
-                <li><a class="links" href="#skillsLink">My skills</a></li>
-                <li><a class="links" href="mailto: jon.tofant@student.um.si">Hire me</a></li>
-            </ul>
-        </section>
-
-
-    <section class="socialMedia">
-        <a class="socialIcon" href="https://twitter.com/jon_tofant"><img width="48px" height="47px" src="assets/twitter.svg" alt="Twitter"></a>
-        <a class="socialIcon" href="https://github.com/JonTofant"><img width="48px" height="47px" src="assets/github.svg" alt="Github"></a>
-        <a class="socialIcon" href="https://www.instagram.com/jon_tofant/"><img width="48px" height="47px" src="assets/instagram.svg" alt="Instagram"></a>
-    </section>
-
-    <div class="quote">
-        <ul>
-            <li>Passion for learning</li>
-            <li>Admiration for Bitcoin</li>
-            <li>No limit to my conquest</li>
-            <li>#lasserrayuntil100k</li>
-        </ul>
-    </div>
-
-    
-</section>
-
-<!-- - - - - - - - - - -->
-<!-- Projects section  -->
-<!-- - - - - - - - - - -->
-<section class="projects" id="projectsLink">
-
-        <div class="circle">
-            <p class="sectionTitle" >Check out some of my projects</p>
-        </div>
-        <div class="quote2">
-            <p>Out of the mountain of despair, a stone of hope</p>
-        </div>
-
-        <div class="projectCard cardOne col1 row1"><a href="https://github.com/JonTofant/rastlina"><img src="assets/projectPlant.svg" class="projectImage" alt="Project plant. Project that takes data from mqtt server and displays it on a website."></a></div>
-        <div class="projectCard cardTwo col1 row2"><a href="https://github.com/JonTofant/VIMproved-happiness"><img src="assets/myvimrc.svg" class="projectImage" alt="My VIM setup"></a></div>
-        <div class="projectCard cardThree col2 row1"><a href="https://jon-tofant.gitbook.io/project-hypervisor/"><img src="assets/hypervisor.svg" class="projectImage" alt="Type 1 hypervisor"></a></div>
-        <div class="projectCard cardFour col2 row2"><a href="https://jon-tofant.gitbook.io/project-hypervisor/"><img src="assets/hypervisor.svg" class="projectImage" alt="Type 1 hypervisor"></a></div>
-
-        <div class="background"></div>
-        <div class="background2"></div>
-
-</section>
-
-<!-- - - - - - - - - -->
-<!-- Skills section  -->
-<!-- - - - - - - - - -->
-<section class="skills" id="skillsLink">
-
-        <div class="circle skillCircle">
-            <p class="sectionTitle" class="sectionTitle" >Check out some of my skills</p>
-        </div>
-
-        <section class="showcase col1 row1">
-            <div class="langTitle">Web development</div>
-            <div class="skill"><img src="assets/java-script.svg" alt="java script">JavaScript</div>
-            <div class="skill"><img src="assets/html5.svg" alt="html5">HTML5</div>
-            <div class="skill"><img src="assets/css3.svg" alt="css 3">CSS 3</div>
-            <div class="skill"><img src="assets/sass.svg" alt="sass and scss">SASS/SCSS</div>
-        </section>
-
-        <section class="showcase col1 row2">
-            <div class="langTitle">Other Languages</div>
-            <div class="skill"><img src="assets/python.svg" alt="python 3">Python 3</div>
-            <div class="skill"><img src="assets/vim.svg" alt="Vim script">Vim script</div>
-            <div class="skill"><img src="assets/c-file.svg"  alt="language c">C</div>
-            <div class="skill"><img src="assets/excel.svg"  alt="excel">Excel</div>
-        </section>
-
-
-</section>
-
-<!-- - - - - - - - - - - -->
-<!-- atributions section -->
-<!-- - - - - - - - - - - -->
-<section class="atributions">
-    <div class="circle circleTwo">
-        <p class="sectionTitle" >Atributions</p>
-    </div>
-
-    <ul>
-        <li><a href="https://iconscout.com/icons/python" target="_blank">Python Icon</a> on <a href="https://iconscout.com">Iconscout</a></li>
-        <li><a href="https://iconscout.com/icons/vim" target="_blank">Vim Icon</a> by <a href="https://iconscout.com/contributors/icon-54" target="_blank">Icon 54</a></li>
-        <li><a href="https://iconscout.com/icons/excel" target="_blank">Excel Logo Icon</a> by <a href="https://iconscout.com/contributors/icon-54" target="_blank">Icon 54</a></li>
-        <li><a href="https://iconscout.com/icons/c" target="_blank">C Icon</a> by <a href="https://iconscout.com/contributors/ravindra-kalkani" target="_blank">Ravindra Kalkani</a></li>
+<header class="site-header">
+  <nav class="nav" aria-label="Main">
+    <a class="nav-name" href="#top">jon<span class="accent">·</span>tofant</a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#research">research</a></li>
+      <li><a href="#robot">the robot</a></li>
+      <li><a href="#playground">playground</a></li>
+      <li><a href="#earlier">earlier work</a></li>
+      <li><a href="#publications">papers</a></li>
+      <li><a href="#contact">contact</a></li>
     </ul>
+  </nav>
+</header>
 
-</section>
+<main id="top">
 
+  <!-- ============================== HERO ============================== -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow mono">PhD researcher · Automation &amp; Robotics · FERI, University of Maribor</p>
+      <h1>I build robots that<br><span class="accent">refuse to fall over.</span></h1>
+      <p class="lede">
+        I combine reinforcement learning with classical control for legged and wheeled-biped
+        robots — hybrid architectures where learned policies and cascaded LQI/PID loops work
+        together, not against each other.
+      </p>
+      <p class="lede-hint mono">
+        ↓ This is not an animation. It's a cart-pole simulation running a real state-feedback
+        controller at 240&nbsp;Hz. <strong>Click the robot to shove it.</strong> Then break the controller with the sliders.
+      </p>
+    </div>
+
+    <div class="wrap wrap-wide">
+      <div class="sim-panel" id="pendulum-panel">
+        <div class="sim-titlebar mono">
+          <span class="sim-dot"></span>
+          wheeled_biped.sim
+          <span class="sim-sub">inverted pendulum on wheels · u = k₁x + k₂ẋ + k₃θ + k₄θ̇</span>
+        </div>
+
+        <canvas id="pendulum-canvas" aria-label="Interactive simulation of a self-balancing two-wheeled robot. Click to push it."></canvas>
+
+        <div class="sim-controls">
+          <div class="slider-grid">
+            <label class="slider-row">
+              <span class="slider-name mono">k₁ <em>cart position</em></span>
+              <input type="range" id="k1" min="-2" max="8" step="0.1" value="3.0">
+              <output class="mono" id="k1-out">3.0</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">k₂ <em>cart velocity</em></span>
+              <input type="range" id="k2" min="-2" max="12" step="0.1" value="6.0">
+              <output class="mono" id="k2-out">6.0</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">k₃ <em>body pitch</em></span>
+              <input type="range" id="k3" min="0" max="120" step="1" value="55">
+              <output class="mono" id="k3-out">55</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">k₄ <em>pitch rate</em></span>
+              <input type="range" id="k4" min="0" max="30" step="0.5" value="12">
+              <output class="mono" id="k4-out">12</output>
+            </label>
+          </div>
+
+          <div class="sim-buttons">
+            <button class="btn" id="shove-left" type="button">← shove</button>
+            <button class="btn" id="shove-right" type="button">shove →</button>
+            <button class="btn btn-ghost" id="pendulum-reset" type="button">reset</button>
+            <button class="btn btn-ghost" id="pendulum-pause" type="button" aria-pressed="false">pause</button>
+
+            <label class="select-label mono" for="preset">preset
+              <select id="preset" class="mono">
+                <option value="tuned">tuned</option>
+                <option value="floppy">floppy</option>
+                <option value="nervous">nervous</option>
+                <option value="doomed">doomed</option>
+              </select>
+            </label>
+
+            <div class="mode-toggle mono" role="group" aria-label="Controller mode">
+              <button class="mode-btn is-active" id="mode-linear" type="button" aria-pressed="true">linear (LQR-style)</button>
+              <button class="mode-btn" id="mode-rl" type="button" aria-pressed="false">nonlinear (RL-style)</button>
+            </div>
+          </div>
+        </div>
+
+        <details class="explain eli5">
+          <summary>🖍️ Explain it like I'm five</summary>
+          <div>
+            <p>Balancing this robot is like balancing a broom standing up on your palm. You can't
+            hold the broom still — you have to keep <em>moving your hand</em> so it stays under
+            the broom. The robot does the same thing with its wheels, hundreds of times per second.</p>
+            <p>The four sliders are the robot's four little worries:</p>
+            <ul>
+              <li><strong>k₃</strong> — how hard it panics when it starts tipping. This is the big one.</li>
+              <li><strong>k₄</strong> — how much it notices the tipping getting <em>faster</em>. This stops it from wobbling forever.</li>
+              <li><strong>k₁</strong> — how much it wants to come back to its home spot.</li>
+              <li><strong>k₂</strong> — how much it dislikes going fast.</li>
+            </ul>
+            <p>Set k₃ to zero and it stops caring about falling. It falls. Try it — it's fine, it gets back up.</p>
+          </div>
+        </details>
+
+        <details class="explain math">
+          <summary>∑ The actual math (for the curious)</summary>
+          <div>
+            <p>Single inverted pendulum on a cart, integrated with semi-implicit Euler at 240&nbsp;Hz:</p>
+            <pre class="mono">θ̈ = [ g·sinθ − cosθ·(u + m·l·θ̇²·sinθ)/(M+m) ] / [ l·(4/3 − m·cos²θ/(M+m)) ]
+ẍ = (u + m·l·(θ̇²·sinθ − θ̈·cosθ))/(M+m)</pre>
+            <p>The controller is full-state feedback, <code class="mono">u = k₁x + k₂ẋ + k₃θ + k₄θ̇</code>,
+            saturated at ±25&nbsp;N — the structure an LQR design produces. Note the non-minimum-phase
+            behaviour: to drive the cart back to the origin, the controller must first steer it
+            <em>away</em> to lean the body toward home. In "RL-style" mode the same state vector is
+            fed through a saturating nonlinearity, <code class="mono">u = u<sub>max</sub>·tanh(·)</code> —
+            a hand-written stand-in that mimics the aggressive, saturation-riding character of
+            trained policies (it's not a live neural network; the real ones are in the papers below).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== RESEARCH ============================== -->
+  <section class="section" id="research">
+    <div class="wrap">
+      <p class="section-num mono">01</p>
+      <h2>What I work on</h2>
+      <p class="section-lede">
+        The field tends to frame learned and classical control as rivals. My research treats them
+        as layers of one architecture: cascaded LQI/PID handles what it's provably good at, and
+        reinforcement learning handles what can't be modelled cleanly — contact, impacts,
+        recovery from the unexpected.
+      </p>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3 class="mono">hybrid architectures</h3>
+          <p>Learned policies and classical loops in the same control stack, each doing the part
+          it's best at. Not "RL replaces control" — coordination between them, with the classical
+          layer as a verifiable fallback.</p>
+        </article>
+        <article class="card">
+          <h3 class="mono">minimalist rewards</h3>
+          <p>Reward only what actually matters — ground contact, velocity tracking — and let
+          balance emerge as an instrumental strategy instead of hand-coding it into the reward.
+          If the policy needs to stay upright to track velocity, it will learn to stay upright.</p>
+        </article>
+        <article class="card">
+          <h3 class="mono">sim-to-real, embedded</h3>
+          <p>Policies trained with PPO across thousands of parallel environments in Isaac Lab,
+          then quantized and deployed on an STM32 — the same class of microcontroller running
+          the classical loops. No offboard compute, no GPU on the robot.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== THE ROBOT ============================== -->
+  <section class="section" id="robot">
+    <div class="wrap">
+      <p class="section-num mono">02</p>
+      <h2>The robot</h2>
+      <p class="section-lede">
+        A two-wheeled self-balancing robot with an articulated suspension, built to be dropped,
+        shoved and thrown off things — and to keep balancing anyway. It performs dynamic
+        maneuvers (table drops, platform jumps) under cascaded LQI/PID control, and is now being
+        extended with reinforcement learning trained in Isaac Lab.
+      </p>
+
+      <div class="media-grid">
+        <figure>
+          <img src="assets/img/biped-hardware.png" alt="The two-wheeled self-balancing robot standing on asphalt" loading="lazy">
+          <figcaption class="mono">the real thing, balancing outdoors</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/biped-cad.png" alt="CAD model of the wheeled biped with the cover removed, showing electronics and actuators" loading="lazy">
+          <figcaption class="mono">CAD, cover off — electronics and drivetrain</figcaption>
+        </figure>
+      </div>
+
+      <div class="spec-and-story">
+        <div class="story">
+          <h3>Why this platform</h3>
+          <p>A wheeled biped is the cheapest possible legged robot that still has the hard
+          problems: it is statically unstable, underactuated, and its contact state changes the
+          moment it leaves the ground. The cascaded LQI/PID stack stabilizes pitch and tracks
+          wheel velocity well within the linear regime — the interesting part is everything
+          outside it. A table drop is a plant-model discontinuity: airborne, the wheel loop has
+          nothing to push against; on impact, states jump. That boundary between regimes is
+          exactly where the learned layer earns its place.</p>
+          <p>The current work trains PPO policies for the same platform in Isaac Lab — thousands
+          of domain-randomized parallel environments — with a deliberately minimal reward:
+          ground contact and velocity tracking, nothing else. Balance isn't rewarded; it emerges
+          because falling makes velocity tracking impossible. The trained policy is then deployed
+          on the robot's STM32, next to the classical loops it collaborates with.</p>
+        </div>
+        <table class="spec-table mono" aria-label="Hardware specification">
+          <tbody>
+            <tr><th>hip actuators</th><td>CyberGear geared BLDC</td></tr>
+            <tr><th>wheels</th><td>DDSM115 direct-drive hub motors</td></tr>
+            <tr><th>IMU</th><td>BNO086 (onboard sensor fusion)</td></tr>
+            <tr><th>compute</th><td>STM32 — control &amp; learned policy</td></tr>
+            <tr><th>control</th><td>cascaded LQI/PID → hybrid with PPO policy</td></tr>
+            <tr><th>training</th><td>Isaac Lab, PPO, ~thousands of parallel envs</td></tr>
+            <tr><th>status</th><td>drops &amp; jumps under classical control; RL extension in progress</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PLAYGROUND ============================== -->
+  <section class="section" id="playground">
+    <div class="wrap">
+      <p class="section-num mono">03</p>
+      <h2>Playground: PID for plants</h2>
+      <p class="section-lede">
+        Control theory isn't only for robots. One of my first projects, years ago, was an MQTT
+        plant monitor — so here is a plant with a proper PID controller on its watering pump.
+        The sun rises and sets, the soil dries out, and the controller tries to hold the moisture
+        you ask for. Tune it badly and you can drown the poor thing.
+      </p>
+    </div>
+
+    <div class="wrap wrap-wide">
+      <div class="sim-panel" id="watering-panel">
+        <div class="sim-titlebar mono">
+          <span class="sim-dot dot-green"></span>
+          plant_pid.sim
+          <span class="sim-sub">soil-moisture control · u = K<sub>p</sub>e + K<sub>i</sub>∫e + K<sub>d</sub>de/dt</span>
+        </div>
+
+        <canvas id="watering-canvas" aria-label="Interactive simulation of a plant whose watering pump is driven by a PID controller."></canvas>
+
+        <div class="sim-controls">
+          <div class="slider-grid">
+            <label class="slider-row">
+              <span class="slider-name mono">setpoint <em>target moisture</em></span>
+              <input type="range" id="wsp" min="20" max="80" step="1" value="55">
+              <output class="mono" id="wsp-out">55%</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">K<sub>p</sub> <em>proportional</em></span>
+              <input type="range" id="wkp" min="0" max="0.30" step="0.005" value="0.06">
+              <output class="mono" id="wkp-out">0.060</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">K<sub>i</sub> <em>integral</em></span>
+              <input type="range" id="wki" min="0" max="0.05" step="0.001" value="0.010">
+              <output class="mono" id="wki-out">0.010</output>
+            </label>
+            <label class="slider-row">
+              <span class="slider-name mono">K<sub>d</sub> <em>derivative</em></span>
+              <input type="range" id="wkd" min="0" max="0.5" step="0.01" value="0.10">
+              <output class="mono" id="wkd-out">0.10</output>
+            </label>
+          </div>
+
+          <div class="sim-buttons">
+            <button class="btn" id="heatwave" type="button">☀ heat wave</button>
+            <button class="btn" id="rain" type="button">🌧 sudden rain</button>
+            <button class="btn btn-ghost" id="watering-reset" type="button">reset</button>
+            <button class="btn btn-ghost" id="watering-pause" type="button" aria-pressed="false">pause</button>
+          </div>
+        </div>
+
+        <details class="explain eli5">
+          <summary>🖍️ Explain it like I'm five</summary>
+          <div>
+            <p>The pump has three feelings about the thirsty plant:</p>
+            <ul>
+              <li><strong>K<sub>p</sub></strong> — "the thirstier the plant, the harder I pump, <em>right now</em>."</li>
+              <li><strong>K<sub>i</sub></strong> — "if the plant has been a <em>little</em> thirsty for a <em>long</em> time,
+              I get more and more impatient until it's fixed." Without this, the plant stays
+              forever slightly thirstier than you asked.</li>
+              <li><strong>K<sub>d</sub></strong> — "whoa, the soil is getting wet <em>fast</em> — I should ease off
+              before I overshoot." The calm one.</li>
+            </ul>
+            <p>Crank K<sub>i</sub> way up and watch the pump get so impatient it floods the pot,
+            then sulks, then floods it again. That's called integral windup, and real engineers
+            fight it every day.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== EARLIER WORK ============================== -->
+  <section class="section" id="earlier">
+    <div class="wrap">
+      <p class="section-num mono">04</p>
+      <h2>Earlier work</h2>
+      <p class="section-lede">
+        Before the wheels, an arm. My mechatronics diploma thesis: a fully 3D-printed 4-DOF
+        manipulator, designed, simulated, built and controlled end-to-end — with a machine-vision
+        demo where the end effector follows your hand in real time.
+      </p>
+
+      <div class="media-grid media-grid-arm">
+        <figure>
+          <img src="assets/img/arm-render.png" alt="Render of the 3D-printed 4-DOF robotic manipulator in grey and orange" loading="lazy">
+          <figcaption class="mono">4-DOF manipulator, Fusion 360 render</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/arm-wireframe.png" alt="Wireframe CAD view of the manipulator" loading="lazy">
+          <figcaption class="mono">wireframe — every part designed from scratch</figcaption>
+        </figure>
+      </div>
+
+      <div class="feature-list">
+        <div class="feature">
+          <h3 class="mono">trajectory generation</h3>
+          <p>Custom point-to-point and linear moves with quadratic, cubic and sinusoidal
+          acceleration profiles — written from scratch, not taken from a library.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">kinematics</h3>
+          <p>Inverse and forward kinematics via the Robotics Toolbox for Python; kinematic
+          validation in MSC Adams, structural FEM validation in Fusion 360.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">embedded link</h3>
+          <p>A custom UART protocol between the Python host and the STM32 that drives the
+          joints — the same host/microcontroller split the wheeled biped uses today.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">machine vision</h3>
+          <p>YOLO models trained for object detection, and a MediaPipe hand-tracking demo where
+          the arm's end effector mirrors the user's hand live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PUBLICATIONS ============================== -->
+  <section class="section" id="publications">
+    <div class="wrap">
+      <p class="section-num mono">05</p>
+      <h2>Papers &amp; talks</h2>
+      <ol class="pub-list">
+        <li>
+          <p class="pub-title">Diferenčno vodenje agilnega dvokolesnega mobilnega robota
+            <span class="pub-en">(Differential control of an agile two-wheeled mobile robot)</span></p>
+          <p class="pub-meta mono">J. Tofant, D. Gleich · ERK 2025, Portorož · pp. 597–600</p>
+        </li>
+        <li>
+          <p class="pub-title">Učenje in vgrajena implementacija nevronskega regulatorja za stabilizacijo dvokolesnega robota z zavračanjem motenj
+            <span class="pub-en">(Learning and embedded implementation of a neural controller for disturbance rejection in a two-wheeled self-balancing robot)</span></p>
+          <p class="pub-meta mono">J. Tofant, A. Sarjaš · workshop paper, in preparation — PPO policy deployed on STM32</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section class="section section-contact" id="contact">
+    <div class="wrap">
+      <p class="section-num mono">06</p>
+      <h2>Say hi</h2>
+      <p class="section-lede">
+        Junior researcher (mladi raziskovalec) at the Faculty of Electrical Engineering and
+        Computer Science, University of Maribor. Happy to talk about hybrid control, wheeled
+        bipeds, reward design, or why your robot keeps falling over.
+      </p>
+      <p class="contact-links mono">
+        <a href="mailto:jon.tofant@um.si">jon.tofant@um.si</a>
+        <a href="https://github.com/JonTofant">github.com/JonTofant</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap mono">
+    <p>© <span id="year">2026</span> Jon Tofant · plain HTML, CSS and JS — no framework, no build step, and yes, the physics is real.</p>
+  </div>
+</footer>
+
+<script src="js/pendulum.js"></script>
+<script src="js/watering.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

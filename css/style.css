@@ -442,8 +442,7 @@ select {
 @media (max-width: 640px) { .media-grid { grid-template-columns: 1fr; } }
 
 .media-grid figure { margin: 0; }
-.media-grid img,
-.media-grid video {
+.media-grid img {
   width: 100%;
   height: 300px;
   object-fit: cover;

@@ -141,14 +141,14 @@
   var HUD_H = 84;
 
   var C = {
-    text: "#8b96a5",
-    bright: "#dbe2ea",
-    accent: "#f6a821",
-    green: "#5fd68b",
-    blue: "#62aef5",
-    red: "#f06a5f",
-    grid: "rgba(139,150,165,0.10)",
-    gridSoft: "rgba(139,150,165,0.05)"
+    text: "#5d6672",
+    bright: "#1b1f24",
+    accent: "#c07600",      /* readable orange on the light scene */
+    green: "#1a7f4b",
+    blue: "#1f6fb2",
+    red: "#c0392b",
+    grid: "rgba(27,31,36,0.12)",
+    gridSoft: "rgba(27,31,36,0.06)"
   };
 
   function lerp(a, b, k) { return a + (b - a) * k; }
@@ -172,8 +172,8 @@
 
     /* sky — brightens with the sun */
     var bg = ctx.createLinearGradient(0, 0, 0, sceneH);
-    bg.addColorStop(0, lerpColor([13, 17, 23], [26, 34, 46], sun));
-    bg.addColorStop(1, "#0d1117");
+    bg.addColorStop(0, lerpColor([124, 140, 166], [150, 196, 232], sun));
+    bg.addColorStop(1, "#eef1f4");
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, Hpx);
 
@@ -187,7 +187,7 @@
       var heat = t < heatUntil;
       ctx.fillStyle = heat ? C.red : C.accent;
       ctx.beginPath(); ctx.arc(bx, by, heat ? 13 : 10, 0, Math.PI * 2); ctx.fill();
-      ctx.strokeStyle = heat ? "rgba(240,106,95,0.5)" : "rgba(246,168,33,0.4)";
+      ctx.strokeStyle = heat ? "rgba(192,57,43,0.6)" : "rgba(192,118,0,0.55)";
       ctx.lineWidth = 1.5;
       for (var r = 0; r < 8; r++) {
         var ra = r * Math.PI / 4 + t * 0.05;
@@ -197,9 +197,9 @@
         ctx.stroke();
       }
     } else {
-      ctx.fillStyle = "#aeb9c8";
+      ctx.fillStyle = "#fdfcf7";
       ctx.beginPath(); ctx.arc(bx, by, 9, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = "#141a23";
+      ctx.fillStyle = "#9fb3c8";
       ctx.beginPath(); ctx.arc(bx + 4, by - 3, 7, 0, Math.PI * 2); ctx.fill();
     }
 
@@ -234,7 +234,7 @@
     ctx.fill();
     /* puddle when drowning */
     if (M > 88) {
-      ctx.fillStyle = "rgba(98,174,245,0.35)";
+      ctx.fillStyle = "rgba(31,111,178,0.5)";
       ctx.beginPath();
       ctx.ellipse(potX, potY + 5, potW * 0.42, 5, 0, 0, Math.PI * 2);
       ctx.fill();
@@ -296,7 +296,7 @@
     ctx.textAlign = "center";
     ctx.fillText("PUMP", pumpX + pumpW / 2, pumpY + pumpH - 8);
     /* duty gauge on the pump */
-    ctx.fillStyle = "rgba(98,174,245,0.25)";
+    ctx.fillStyle = "rgba(31,111,178,0.18)";
     ctx.fillRect(pumpX + 6, pumpY + 6, pumpW - 12, 8);
     ctx.fillStyle = C.blue;
     ctx.fillRect(pumpX + 6, pumpY + 6, (pumpW - 12) * duty, 8);
@@ -352,7 +352,7 @@
 
   function drawChart() {
     var top = Hpx - HUD_H;
-    ctx.fillStyle = "rgba(9,12,16,0.72)";
+    ctx.fillStyle = "rgba(255,255,255,0.86)";
     ctx.fillRect(0, top, W, HUD_H);
     ctx.strokeStyle = C.grid;
     ctx.lineWidth = 1;
@@ -363,7 +363,7 @@
     function yOf(val) { return y0 - (val / 100) * (y0 - y1); }
 
     /* setpoint (dashed) */
-    ctx.strokeStyle = "rgba(246,168,33,0.55)";
+    ctx.strokeStyle = "rgba(192,118,0,0.8)";
     ctx.setLineDash([4, 4]);
     ctx.lineWidth = 1;
     ctx.beginPath();
@@ -377,7 +377,7 @@
     ctx.setLineDash([]);
 
     /* pump duty (0..1 → 0..100 scale) */
-    ctx.strokeStyle = "rgba(98,174,245,0.8)";
+    ctx.strokeStyle = "rgba(31,111,178,0.85)";
     ctx.lineWidth = 1.2;
     ctx.beginPath();
     for (i = 0; i < TRACE_N; i++) {

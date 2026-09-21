@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jon Tofant — Robots that refuse to fall over</title>
-  <meta name="description" content="Jon Tofant is a PhD researcher in Automation and Robotics at FERI, University of Maribor, combining reinforcement learning with classical control for wheeled-biped robots. This page contains real, interactive control-loop simulations. Push the robot.">
+  <meta name="description" content="Jon Tofant is a PhD researcher in Automation and Robotics at FERI, University of Maribor, combining reinforcement learning with classical control for wheeled-biped and legged robots. Interactive control-loop simulations, and video of the hardware. Push the robot.">
   <meta name="author" content="Jon Tofant">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Jon Tofant — Robots that refuse to fall over">
-  <meta property="og:description" content="Hybrid RL + classical control for wheeled-biped robots. The hero of this site is a live inverted-pendulum simulation running a real state-feedback controller. Push it.">
+  <meta property="og:description" content="Hybrid RL + classical control for wheeled-biped robots. A learned wheel policy in 5186 parameters on one STM32, hand-tuned legs, and a live inverted-pendulum simulation you can shove.">
   <meta property="og:url" content="https://jontofant.github.io/">
   <meta property="og:image" content="https://jontofant.github.io/assets/img/biped-hardware.png">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='24' r='6' fill='%23f6a821'/%3E%3Crect x='14.2' y='2' width='3.6' height='18' rx='1.8' transform='rotate(12 16 24)' fill='%23e8edf2'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='24' r='6' fill='%23f6a821'/%3E%3Crect x='14.2' y='2' width='3.6' height='18' rx='1.8' transform='rotate(12 16 24)' fill='%232a323d'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -28,8 +28,9 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="#research">research</a></li>
       <li><a href="#robot">the robot</a></li>
+      <li><a href="#sim2real">sim→real</a></li>
+      <li><a href="#walker">the walker</a></li>
       <li><a href="#playground">playground</a></li>
-      <li><a href="#earlier">earlier work</a></li>
       <li><a href="#publications">papers</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
@@ -45,8 +46,9 @@
       <h1>I build robots that<br><span class="accent">refuse to fall over.</span></h1>
       <p class="lede">
         I combine reinforcement learning with classical control for legged and wheeled-biped
-        robots — hybrid architectures where learned policies and cascaded LQI/PID loops work
-        together, not against each other.
+        robots — hybrid architectures where learned policies and hand-tuned loops work
+        together, not against each other. The current one balances on two wheels using a policy
+        of 5&nbsp;186 parameters, running on a single microcontroller with no computer on board.
       </p>
       <p class="lede-hint mono">
         ↓ This is not an animation. It's a cart-pole simulation running a real state-feedback
@@ -139,7 +141,8 @@
             <em>away</em> to lean the body toward home. In "RL-style" mode the same state vector is
             fed through a saturating nonlinearity, <code class="mono">u = u<sub>max</sub>·tanh(·)</code> —
             a hand-written stand-in that mimics the aggressive, saturation-riding character of
-            trained policies (it's not a live neural network; the real ones are in the papers below).</p>
+            trained policies (it's not a live neural network; the real one is on the robot, and in
+            the talk below).</p>
           </div>
         </details>
       </div>
@@ -153,7 +156,7 @@
       <h2>What I work on</h2>
       <p class="section-lede">
         The field tends to frame learned and classical control as rivals. My research treats them
-        as layers of one architecture: cascaded LQI/PID handles what it's provably good at, and
+        as layers of one architecture: hand-tuned impedance handles what it's provably good at, and
         reinforcement learning handles what can't be modelled cleanly — contact, impacts,
         recovery from the unexpected.
       </p>
@@ -167,15 +170,15 @@
         </article>
         <article class="card">
           <h3 class="mono">minimalist rewards</h3>
-          <p>Reward only what actually matters — ground contact, velocity tracking — and let
-          balance emerge as an instrumental strategy instead of hand-coding it into the reward.
-          If the policy needs to stay upright to track velocity, it will learn to stay upright.</p>
+          <p>Reward only what actually matters and let balance emerge as an instrumental
+          strategy instead of hand-coding it. The flip side is that a policy will exploit every
+          loophole you leave open — most of my debugging time is spent finding them.</p>
         </article>
         <article class="card">
           <h3 class="mono">sim-to-real, embedded</h3>
           <p>Policies trained with PPO across thousands of parallel environments in Isaac Lab,
-          then quantized and deployed on an STM32 — the same class of microcontroller running
-          the classical loops. No offboard compute, no GPU on the robot.</p>
+          then deployed on an STM32 — the same class of microcontroller running the classical
+          loops. No offboard compute, no GPU on the robot.</p>
         </article>
       </div>
     </div>
@@ -185,60 +188,267 @@
   <section class="section" id="robot">
     <div class="wrap">
       <p class="section-num mono">02</p>
-      <h2>The robot</h2>
+      <h2>The robot: two loops, one machine</h2>
       <p class="section-lede">
-        A two-wheeled self-balancing robot with an articulated suspension, built to be dropped,
-        shoved and thrown off things — and to keep balancing anyway. It performs dynamic
-        maneuvers (table drops, platform jumps) under cascaded LQI/PID control, and is now being
-        extended with reinforcement learning trained in Isaac Lab.
+        A two-wheeled self-balancing robot with articulated legs, built to be dropped, shoved and
+        thrown off things — and to keep balancing anyway. What makes it interesting isn't either
+        loop on its own. It's that the legs are hand-tuned and the wheels are learned, and neither
+        one is told what maneuver to perform.
       </p>
+    </div>
 
-      <div class="media-grid">
-        <figure>
-          <img src="assets/img/biped-hardware.png" alt="The two-wheeled self-balancing robot standing on asphalt" loading="lazy">
-          <figcaption class="mono">the real thing, balancing outdoors</figcaption>
+    <div class="wrap wrap-wide">
+      <figure class="clip clip-wide">
+        <video data-src="assets/video/table-drop.mp4" muted loop playsinline preload="none"
+               aria-label="The robot driving off a table and landing"></video>
+        <figcaption class="mono">
+          Driving off a table and landing. The jump was never trained in simulation — balancing is
+          a learned policy, the legs are hand-tuned impedance control, and neither loop specifies
+          this maneuver. The two together just make it possible.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="wrap">
+      <div class="loop-split">
+        <article class="loop-card">
+          <p class="loop-tag mono">policy loop · learned</p>
+          <h3>Two hub motors, nothing else</h3>
+          <ul>
+            <li>13 observations in, 2 wheel currents out</li>
+            <li>5&nbsp;186 parameters at 66.7&nbsp;Hz (15&nbsp;ms)</li>
+            <li>One STM32F446RE — no companion computer</li>
+            <li>Trained with PPO in Isaac Lab, then quantized and flown</li>
+          </ul>
+        </article>
+        <article class="loop-card">
+          <p class="loop-tag mono">leg impedance · hand-tuned</p>
+          <h3>Four leg joints, fixed stance</h3>
+          <ul>
+            <li>MIT-mode PD closed <em>inside</em> each CyberGear drive</li>
+            <li>Its own loop rate, independent of the policy</li>
+            <li>Stiffness and damping set by hand, not learned</li>
+            <li>Absorbs impact so the wheel loop never sees the spike</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <div class="wrap wrap-wide">
+      <div class="clip-grid clip-grid-2">
+        <figure class="clip">
+          <video data-src="assets/video/compliance-breakdown.mp4" muted loop playsinline preload="none"
+                 aria-label="Animation splitting the robot into the platform, the leg stiffness and damping, and the learned wheel currents"></video>
+          <figcaption class="mono">the three pieces: platform, leg stiffness and damping, learned wheel currents</figcaption>
         </figure>
-        <figure>
-          <img src="assets/img/biped-cad.png" alt="CAD model of the wheeled biped with the cover removed, showing electronics and actuators" loading="lazy">
-          <figcaption class="mono">CAD, cover off — electronics and drivetrain</figcaption>
+        <figure class="clip">
+          <video data-src="assets/video/push-rejection.mp4" muted loop playsinline preload="none"
+                 aria-label="The robot rejecting a push: the leg impedance absorbing the impact while the learned wheel policy keeps the platform upright"></video>
+          <figcaption class="mono">a push: legs absorb the impact, the policy keeps the platform upright</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/table-jump.mp4" muted loop playsinline preload="none"
+                 aria-label="Robot jumping off a table"></video>
+          <figcaption class="mono">jumping off a table — momentum and compliance do the work a reference trajectory would have had to specify</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/self-righting.mp4" muted loop playsinline preload="none"
+                 aria-label="The robot standing itself back up after a fall"></video>
+          <figcaption class="mono">standing itself back up after a fall</figcaption>
         </figure>
       </div>
+    </div>
 
+    <div class="wrap">
       <div class="spec-and-story">
         <div class="story">
           <h3>Why this platform</h3>
           <p>A wheeled biped is the cheapest possible legged robot that still has the hard
           problems: it is statically unstable, underactuated, and its contact state changes the
-          moment it leaves the ground. The cascaded LQI/PID stack stabilizes pitch and tracks
-          wheel velocity well within the linear regime — the interesting part is everything
-          outside it. A table drop is a plant-model discontinuity: airborne, the wheel loop has
-          nothing to push against; on impact, states jump. That boundary between regimes is
-          exactly where the learned layer earns its place.</p>
-          <p>The current work trains PPO policies for the same platform in Isaac Lab — thousands
-          of domain-randomized parallel environments — with a deliberately minimal reward:
-          ground contact and velocity tracking, nothing else. Balance isn't rewarded; it emerges
-          because falling makes velocity tracking impossible. The trained policy is then deployed
-          on the robot's STM32, next to the classical loops it collaborates with.</p>
+          moment it leaves the ground. A table drop is a plant-model discontinuity — airborne, the
+          wheel loop has nothing to push against; on impact, states jump. That boundary between
+          regimes is exactly where the learned layer earns its place.</p>
+          <p>Splitting the machine in two is what makes it tractable. The legs are a spring and a
+          damper with numbers I chose; the wheels are a policy that learned what to do about
+          whatever the legs let through. Neither half needs a model of the other, and only one half
+          needed a GPU.</p>
         </div>
         <table class="spec-table mono" aria-label="Hardware specification">
           <tbody>
-            <tr><th>hip actuators</th><td>CyberGear geared BLDC</td></tr>
+            <tr><th>leg actuators</th><td>CyberGear geared BLDC, MIT mode</td></tr>
             <tr><th>wheels</th><td>DDSM115 direct-drive hub motors</td></tr>
             <tr><th>IMU</th><td>BNO086 (onboard sensor fusion)</td></tr>
-            <tr><th>compute</th><td>STM32 — control &amp; learned policy</td></tr>
-            <tr><th>control</th><td>cascaded LQI/PID → hybrid with PPO policy</td></tr>
-            <tr><th>training</th><td>Isaac Lab, PPO, ~thousands of parallel envs</td></tr>
-            <tr><th>status</th><td>drops &amp; jumps under classical control; RL extension in progress</td></tr>
+            <tr><th>compute</th><td>STM32F446RE — classical loops &amp; policy</td></tr>
+            <tr><th>policy</th><td>13 obs → 2 currents, 5&nbsp;186 params, 66.7&nbsp;Hz</td></tr>
+            <tr><th>training</th><td>Isaac Lab, PPO, thousands of parallel envs</td></tr>
+            <tr><th>legs</th><td>hand-tuned impedance, fixed stance</td></tr>
           </tbody>
         </table>
       </div>
+
+      <aside class="callout">
+        <p class="callout-kicker mono">the full story</p>
+        <p>The architecture, the reward design and everything that went wrong are in my
+        Retzhof 2026 talk — 39 slides with the video in place.</p>
+        <p><a class="btn btn-link" href="https://jontofant.github.io/policy-learning-talk/">
+          Policy learning for complex maneuvers →</a></p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============================== SIM TO REAL ============================== -->
+  <section class="section" id="sim2real">
+    <div class="wrap">
+      <p class="section-num mono">03</p>
+      <h2>Simulation to reality</h2>
+      <p class="section-lede">
+        Simulation is the idealized system. The robot is not. The gap between them is where most
+        of the work actually happens — and the fix turned out not to be a better model of the
+        robot, but refusing to commit to one.
+      </p>
+
+      <div class="feature-list">
+        <div class="feature">
+          <h3 class="mono">measure first</h3>
+          <p>Before randomizing anything, characterize the actual hardware. Twelve nominally
+          identical motors, measured on a bench, have current deadzones spread across
+          <strong>36–78&nbsp;mA</strong>. That spread is the thing to reproduce — not its average.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">train against a population</h3>
+          <p>Each parallel environment draws its own masses, frictions and actuator parameters.
+          The policy never meets the same robot twice, so it can't overfit to one. Read the widths
+          of those ranges, not the names of the parameters.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">widen in stages</h3>
+          <p>Domain randomization applied all at once stops the policy learning anything. Applied
+          in stages, each widening the world a little further, it survives the ranges that would
+          have prevented it from ever getting off the ground.</p>
+        </div>
+        <div class="feature">
+          <h3 class="mono">don't grade in the training simulator</h3>
+          <p>Isaac Lab, MuJoCo and the robot disagree about the same controller — and the
+          simulator you trained in is the one most likely to flatter you. If the score comes from
+          the same physics that produced the policy, it isn't evidence.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap wrap-wide">
+      <div class="clip-grid clip-grid-2">
+        <figure class="clip">
+          <video data-src="assets/video/wheel-diameter-swap.mp4" muted loop playsinline preload="none"
+                 aria-label="The robot balancing with two different wheel diameters, one changed while it is running"></video>
+          <figcaption class="mono">a wheel changed for a different diameter <em>while it is balancing</em> — the policy never retunes</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/com-shift-load.mp4" muted loop playsinline preload="none"
+                 aria-label="An off-centre mass placed on the robot, shifting its centre of mass"></video>
+          <figcaption class="mono">an off-centre mass dropped on top, shifting the centre of mass</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/incline.mp4" muted loop playsinline preload="none"
+                 aria-label="The platform under the robot tilting as the incline changes"></video>
+          <figcaption class="mono">the ground itself tilting underneath it</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/obstacle-maneuvering.mp4" muted loop playsinline preload="none"
+                 aria-label="The robot driving between obstacles under hand commands"></video>
+          <figcaption class="mono">driving between obstacles under hand commands</figcaption>
+        </figure>
+      </div>
+
+      <!-- shot portrait on a phone, so these two keep a 9:16 box -->
+      <div class="clip-grid clip-grid-portrait">
+        <figure class="clip clip-portrait">
+          <video data-src="assets/video/slip-test.mp4" muted loop playsinline preload="none"
+                 aria-label="The robot pushed with mismatched wheel diameters and friction: one wheel breaks traction while the other holds"></video>
+          <figcaption class="mono">mismatched diameter and friction: one wheel breaks traction, the other holds</figcaption>
+        </figure>
+        <figure class="clip clip-portrait">
+          <video data-src="assets/video/slip-test-slowmo.mp4" muted loop playsinline preload="none"
+                 aria-label="The same push in slow motion, zoomed on the wheels: the slipping wheel spins up while the other holds"></video>
+          <figcaption class="mono">the same push, slowed and zoomed — the slipping wheel spins up</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <h3 class="sub-h">Change one thing at a time, twice</h3>
+      <p>Three policies, each differing from the previous one in a single respect, tested on the
+      real robot rather than in the simulator that trained them.</p>
+      <div class="table-scroll">
+        <table class="result-table mono" aria-label="Comparison of three policy variants on hardware">
+          <thead>
+            <tr><th>variant</th><th>network</th><th>actuators</th><th>RMS pitch on hardware</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A</strong></td><td>MLP, 5&nbsp;186 params</td><td>point estimate</td>
+              <td class="bad">did not start</td>
+            </tr>
+            <tr>
+              <td><strong>B</strong></td><td>MLP, 5&nbsp;186 params</td><td>range randomized</td>
+              <td>5.04°</td>
+            </tr>
+            <tr>
+              <td><strong>C</strong></td><td>GRU, 23&nbsp;618 params</td><td>range randomized</td>
+              <td class="good">2.42°</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine-print">
+        A vs B isolates actuator randomization; B vs C isolates the recurrent policy. The policy
+        trained against a single best-guess actuator model never started on hardware at all — its
+        fall detector inhibited actuation before the first stage. Randomizing <em>around</em> the
+        measured actuators is what transfers.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== THE WALKER ============================== -->
+  <section class="section" id="walker">
+    <div class="wrap">
+      <p class="section-num mono">04</p>
+      <h2>The other robot</h2>
+      <p class="section-lede">
+        A legged robot, trained the same way, kept deliberately separate — it's where I test
+        whether a reward that worked on two wheels means anything on four legs. Mostly it's where
+        I learn how creatively a policy will cheat.
+      </p>
+    </div>
+
+    <div class="wrap wrap-wide">
+      <div class="clip-grid clip-grid-2">
+        <figure class="clip clip-ultrawide">
+          <video data-src="assets/video/walker-sim.mp4" muted loop playsinline preload="none"
+                 aria-label="A quadruped walking robot in simulation"></video>
+          <figcaption class="mono">in simulation, thousands of copies at once</figcaption>
+        </figure>
+        <figure class="clip">
+          <video data-src="assets/video/walker-seated-forward.mp4" muted loop playsinline preload="none"
+                 aria-label="A learned policy moving forward in a low, seated posture"></video>
+          <figcaption class="mono">moving forward in a low, seated posture — technically correct, and not what anyone wanted</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <p>
+        That second clip is the whole lesson. Sitting down and shuffling forward satisfies a
+        velocity-tracking reward beautifully: it is stable, it is cheap, and it scores well. The
+        robot found it because nothing in the reward said standing up was the point. You specify;
+        it negotiates. Every reward term is a loophole until proven otherwise.
+      </p>
     </div>
   </section>
 
   <!-- ============================== PLAYGROUND ============================== -->
   <section class="section" id="playground">
     <div class="wrap">
-      <p class="section-num mono">03</p>
+      <p class="section-num mono">05</p>
       <h2>Playground: PID for plants</h2>
       <p class="section-lede">
         Control theory isn't only for robots. One of my first projects, years ago, was an MQTT
@@ -314,7 +524,7 @@
   <!-- ============================== EARLIER WORK ============================== -->
   <section class="section" id="earlier">
     <div class="wrap">
-      <p class="section-num mono">04</p>
+      <p class="section-num mono">06</p>
       <h2>Earlier work</h2>
       <p class="section-lede">
         Before the wheels, an arm. My mechatronics diploma thesis: a fully 3D-printed 4-DOF
@@ -361,18 +571,27 @@
   <!-- ============================== PUBLICATIONS ============================== -->
   <section class="section" id="publications">
     <div class="wrap">
-      <p class="section-num mono">05</p>
+      <p class="section-num mono">07</p>
       <h2>Papers &amp; talks</h2>
       <ol class="pub-list">
         <li>
-          <p class="pub-title">Diferenčno vodenje agilnega dvokolesnega mobilnega robota
-            <span class="pub-en">(Differential control of an agile two-wheeled mobile robot)</span></p>
-          <p class="pub-meta mono">J. Tofant, D. Gleich · ERK 2025, Portorož · pp. 597–600</p>
+          <p class="pub-title">Policy learning for complex maneuvers</p>
+          <p class="pub-meta mono">J. Tofant, A. Sarjaš · Styrian Workshop on Automatic Control,
+            Retzhof 2026 · invited talk</p>
+          <p class="pub-links mono">
+            <a href="https://jontofant.github.io/policy-learning-talk/">slides</a>
+            <a href="https://www.tugraz.at/institute/irt/events/retzhof">workshop</a>
+          </p>
         </li>
         <li>
           <p class="pub-title">Učenje in vgrajena implementacija nevronskega regulatorja za stabilizacijo dvokolesnega robota z zavračanjem motenj
             <span class="pub-en">(Learning and embedded implementation of a neural controller for disturbance rejection in a two-wheeled self-balancing robot)</span></p>
-          <p class="pub-meta mono">J. Tofant, A. Sarjaš · workshop paper, in preparation — PPO policy deployed on STM32</p>
+          <p class="pub-meta mono">J. Tofant, A. Sarjaš · PPO policy deployed on STM32</p>
+        </li>
+        <li>
+          <p class="pub-title">Diferenčno vodenje agilnega dvokolesnega mobilnega robota
+            <span class="pub-en">(Differential control of an agile two-wheeled mobile robot)</span></p>
+          <p class="pub-meta mono">J. Tofant, D. Gleich · ERK 2025, Portorož · pp. 597–600</p>
         </li>
       </ol>
     </div>
@@ -381,7 +600,7 @@
   <!-- ============================== CONTACT ============================== -->
   <section class="section section-contact" id="contact">
     <div class="wrap">
-      <p class="section-num mono">06</p>
+      <p class="section-num mono">08</p>
       <h2>Say hi</h2>
       <p class="section-lede">
         Junior researcher (mladi raziskovalec) at the Faculty of Electrical Engineering and

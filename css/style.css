@@ -709,16 +709,11 @@ select {
 
 /* Clips whose source is not 16:9. The box must match the file, otherwise
    object-fit: cover silently crops — the slip-test pair is shot portrait
-   on a phone (1280x2276) and the simulation capture is 1680x490. */
-.clip-portrait video  { aspect-ratio: 9 / 16; }
-.clip-ultrawide video { aspect-ratio: 24 / 7; }
+   on a phone (1280x2276). */
+.clip-portrait video { aspect-ratio: 9 / 16; }
 
 .clip-grid-portrait {
   grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 260px));
   justify-content: center;
 }
 
-/* A clip that should not span the full measure — half width on desktop,
-   full width once there is no room to spare. */
-.clip-half { max-width: 560px; }
-@media (max-width: 640px) { .clip-half { max-width: none; } }

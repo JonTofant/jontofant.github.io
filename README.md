@@ -48,7 +48,16 @@ that must match its source file, or `object-fit: cover` silently crops:
 |---|---|---|
 | most clips | 1280×720 (16:9) | *(default)* |
 | `slip-test`, `slip-test-slowmo` | 1280×2276 (9:16, shot portrait) | `.clip-portrait` |
-| `walker-sim` | 1680×490 | `.clip-ultrawide` |
+
+`walker-exp05.mp4` was cut from a 1680×490 three-panel comparison, cropped to
+the exp05 panel alone with GStreamer:
+
+```
+gst-launch-1.0 filesrc location=walker-sim.mp4 ! decodebin ! videoconvert \
+  ! videocrop left=1122 right=0 top=126 bottom=50 \
+  ! videoconvert ! x264enc pass=quant quantizer=21 speed-preset=slower \
+  ! mp4mux ! filesink location=walker-exp05.mp4
+```
 
 ## Editing
 

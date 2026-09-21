@@ -421,26 +421,32 @@
     </div>
 
     <div class="wrap wrap-wide">
-      <div class="clip-grid clip-grid-2">
-        <figure class="clip clip-ultrawide">
-          <video data-src="assets/video/walker-sim.mp4" muted loop playsinline preload="none"
-                 aria-label="A quadruped walking robot in simulation"></video>
-          <figcaption class="mono">in simulation, thousands of copies at once</figcaption>
-        </figure>
-        <figure class="clip">
-          <video data-src="assets/video/walker-seated-forward.mp4" muted loop playsinline preload="none"
-                 aria-label="A learned policy moving forward in a low, seated posture"></video>
-          <figcaption class="mono">moving forward in a low, seated posture — technically correct, and not what anyone wanted</figcaption>
-        </figure>
-      </div>
+      <!-- 1680x490 three-up: needs the full width or the reward figures are
+           too small to read -->
+      <figure class="clip clip-wide clip-ultrawide">
+        <video data-src="assets/video/walker-sim.mp4" muted loop playsinline preload="none"
+               aria-label="Three policies walking side by side in simulation under the same reward function, labelled with their reward scores and their height as a percentage of standing height"></video>
+        <figcaption class="mono">
+          Three policies, one reward function. The more capable network scores higher
+          — GRU 54.10 against the MLP baseline's 51.86 — and walks visibly lower to do it.
+        </figcaption>
+      </figure>
+
+      <figure class="clip clip-half">
+        <video data-src="assets/video/walker-seated-forward.mp4" muted loop playsinline preload="none"
+               aria-label="A learned policy moving forward in a low, seated posture"></video>
+        <figcaption class="mono">moving forward in a low, seated posture — technically correct, and not what anyone wanted</figcaption>
+      </figure>
     </div>
 
     <div class="wrap">
       <p>
-        That second clip is the whole lesson. Sitting down and shuffling forward satisfies a
-        velocity-tracking reward beautifully: it is stable, it is cheap, and it scores well. The
-        robot found it because nothing in the reward said standing up was the point. You specify;
-        it negotiates. Every reward term is a loophole until proven otherwise.
+        Both clips are the same lesson from opposite ends. Sitting down and shuffling forward
+        satisfies a velocity-tracking reward beautifully: it is stable, it is cheap, and it scores
+        well. Give the policy a more capable network and it does not stand up straighter — it gets
+        better at finding that crouch, and the reward goes up while the posture goes down. Nothing
+        in the reward ever said standing up was the point. You specify; it negotiates. Every reward
+        term is a loophole until proven otherwise.
       </p>
     </div>
   </section>

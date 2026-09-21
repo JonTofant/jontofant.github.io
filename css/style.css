@@ -717,3 +717,8 @@ select {
   grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 260px));
   justify-content: center;
 }
+
+/* A clip that should not span the full measure — half width on desktop,
+   full width once there is no room to spare. */
+.clip-half { max-width: 560px; }
+@media (max-width: 640px) { .clip-half { max-width: none; } }

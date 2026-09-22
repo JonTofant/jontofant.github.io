@@ -3,18 +3,25 @@
    ============================================================ */
 
 :root {
-  --bg: #0e1116;
-  --bg-raised: #151a21;
-  --bg-panel: #11161d;
-  --line: #262d38;
-  --line-soft: #1c222b;
-  --text: #dbe2ea;
-  --text-dim: #8b96a5;
-  --accent: #f6a821;          /* the orange from the robot renders */
-  --accent-soft: rgba(246, 168, 33, 0.12);
-  --green: #5fd68b;
-  --red: #f06a5f;
-  --blue: #62aef5;
+  --bg: #faf9f7;
+  --bg-raised: #ffffff;
+  --bg-panel: #ffffff;
+  --bg-translucent: rgba(250, 249, 247, 0.85);
+  --line: #d9d5cd;
+  --line-soft: #e8e5df;
+  --text: #1b1f24;
+  --text-dim: #5d6672;
+  /* The orange from the robot renders is a graphic colour: at 1.9:1 on white
+     it is unreadable as text. --accent is the darkened, AA-compliant text
+     version (4.6:1); --accent-bright stays for fills, dots and canvas marks. */
+  --accent: #a85f00;
+  --accent-bright: #f6a821;
+  --accent-soft: rgba(246, 168, 33, 0.16);
+  --green: #1a7f4b;
+  --red: #c0392b;
+  --blue: #1f6fb2;
+  --shadow: 0 18px 50px rgba(27, 31, 36, 0.10);
+  --shadow-soft: 0 2px 10px rgba(27, 31, 36, 0.06);
   --mono: ui-monospace, "Cascadia Code", "JetBrains Mono", Consolas, Menlo, monospace;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   --wrap: 46rem;
@@ -39,8 +46,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* faint engineering-grid backdrop */
   background-image:
-    linear-gradient(rgba(139, 150, 165, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 150, 165, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(27, 31, 36, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 31, 36, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -67,7 +74,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(14, 17, 22, 0.85);
+  background: var(--bg-translucent);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line-soft);
 }
@@ -177,7 +184,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
   border: 1px solid var(--line);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  box-shadow: var(--shadow);
 }
 
 .sim-titlebar {
@@ -195,8 +202,8 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
 .sim-dot {
   width: 9px; height: 9px;
   border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  background: var(--accent-bright);
+  box-shadow: 0 0 8px var(--accent-bright);
   flex: none;
 }
 .sim-dot.dot-green { background: var(--green); box-shadow: 0 0 8px var(--green); }
@@ -306,7 +313,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
   transition: background 0.15s;
 }
-.btn:hover { background: rgba(246, 168, 33, 0.25); }
+.btn:hover { background: rgba(246, 168, 33, 0.30); }
 .btn:active { transform: translateY(1px); }
 
 .btn-ghost {
@@ -413,7 +420,7 @@ select {
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 1rem;
 }
 
@@ -448,9 +455,9 @@ select {
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid var(--line);
-  background: #000;
+  background: var(--bg-raised);
 }
-.media-grid-arm img { object-fit: contain; background: #05070a; }
+.media-grid-arm img { object-fit: contain; background: var(--bg-raised); }
 .media-grid figcaption {
   font-size: 0.75rem;
   color: var(--text-dim);
@@ -563,3 +570,150 @@ select {
   font-size: 0.78rem;
 }
 .site-footer p { margin: 0; }
+
+
+/* ============================== video clips ============================== */
+/* Clips are lazy: js/main.js swaps data-src -> src and plays them only while
+   they are on screen, so the page does not pull 28 MB of video on load. */
+
+.clip-grid {
+  display: grid;
+  /* min() keeps the track from exceeding the container on a 320px phone */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 1rem;
+  margin: 0 0 2.2rem;
+}
+.clip-grid-2 { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .clip-grid-2 { grid-template-columns: 1fr; } }
+
+.clip { margin: 0 0 2.2rem; }
+.clip-grid .clip { margin: 0; }
+
+.clip video {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;         /* reserves height before the clip loads */
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-soft);
+}
+.clip-wide video { aspect-ratio: 16 / 9; }   /* source is 16:9 — do not crop the landing */
+
+.clip figcaption {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+  padding-top: 0.5rem;
+}
+.clip figcaption::before { content: "\203A  "; color: var(--accent); }
+.clip-wide figcaption { font-size: 0.88rem; max-width: 48rem; }
+
+/* ============================== two-loop split ============================== */
+
+.loop-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0 0 2.2rem;
+}
+@media (max-width: 700px) { .loop-split { grid-template-columns: 1fr; } }
+
+.loop-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem;
+}
+.loop-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.45rem;
+}
+.loop-card h3 { font-size: 1.02rem; margin-bottom: 0.7rem; }
+.loop-card ul { margin: 0; padding-left: 1.1rem; }
+.loop-card li { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 0.32rem; }
+.loop-card li:last-child { margin-bottom: 0; }
+
+/* ============================== callout ============================== */
+
+.callout {
+  margin-top: 2.4rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent-bright);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  padding: 1.2rem 1.4rem;
+}
+.callout-kicker {
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+.callout p { margin: 0 0 0.8rem; font-size: 0.95rem; }
+.callout p:last-child { margin-bottom: 0; }
+
+.btn-link {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 7px;
+  border: 1px solid var(--accent);
+  background: var(--bg-raised);
+  color: var(--accent);
+}
+.btn-link:hover { background: var(--accent-soft); text-decoration: none; }
+
+/* ============================== results table ============================== */
+
+.sub-h { font-size: 1.15rem; margin-top: 2.6rem; }
+
+.table-scroll { overflow-x: auto; margin: 0 0 0.9rem; }
+
+.result-table {
+  width: 100%;
+  min-width: 33rem;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.result-table th, .result-table td {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.result-table thead th {
+  color: var(--accent);
+  font-weight: 500;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+}
+.result-table tbody tr:last-child td { border-bottom: none; }
+.result-table td.good { color: var(--green); font-weight: 700; }
+.result-table td.bad  { color: var(--red); }
+
+.fine-print { font-size: 0.85rem; color: var(--text-dim); max-width: 46rem; }
+
+/* ============================== publication links ============================== */
+
+.pub-links { margin: 0.55rem 0 0; display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: 0.78rem; }
+
+/* Clips whose source is not 16:9. The box must match the file, otherwise
+   object-fit: cover silently crops — the slip-test pair is shot portrait
+   on a phone (1280x2276). */
+.clip-portrait video { aspect-ratio: 9 / 16; }
+
+.clip-grid-portrait {
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 260px));
+  justify-content: center;
+}
+

@@ -210,13 +210,14 @@
   }
 
   var C = {
-    grid: "rgba(139,150,165,0.10)",
-    gridSoft: "rgba(139,150,165,0.05)",
-    text: "#8b96a5",
-    bright: "#dbe2ea",
-    accent: "#f6a821",
-    blue: "#62aef5",
-    red: "#f06a5f",
+    grid: "rgba(27,31,36,0.12)",
+    gridSoft: "rgba(27,31,36,0.06)",
+    text: "#5d6672",
+    bright: "#e8edf2",      /* marker drawn on the dark body — stays light */
+    accent: "#f6a821",      /* graphic orange: only on the dark body */
+    accentDeep: "#c07600",  /* readable orange: scene + HUD, on light */
+    blue: "#1f6fb2",
+    red: "#c0392b",
     body: "#2a323d",
     bodyDark: "#1b212a",
     tire: "#11151b"
@@ -229,8 +230,8 @@
 
     /* backdrop gradient */
     var bg = ctx.createLinearGradient(0, 0, 0, Hpx);
-    bg.addColorStop(0, "#141a23");
-    bg.addColorStop(1, "#0d1117");
+    bg.addColorStop(0, "#ffffff");
+    bg.addColorStop(1, "#f2f0ec");
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, W, Hpx);
 
@@ -264,13 +265,13 @@
     /* origin flag (home position) */
     var ox = worldToScreenX(0);
     if (ox > -20 && ox < W + 20) {
-      ctx.strokeStyle = C.accent;
+      ctx.strokeStyle = C.accentDeep;
       ctx.lineWidth = 1.5;
       ctx.beginPath();
       ctx.moveTo(ox, gy);
       ctx.lineTo(ox, gy - 26);
       ctx.stroke();
-      ctx.fillStyle = C.accent;
+      ctx.fillStyle = C.accentDeep;
       ctx.beginPath();
       ctx.moveTo(ox, gy - 26);
       ctx.lineTo(ox + 14, gy - 21);
@@ -430,7 +431,7 @@
 
   function drawTrace() {
     var top = Hpx - HUD_H;
-    ctx.fillStyle = "rgba(9,12,16,0.72)";
+    ctx.fillStyle = "rgba(255,255,255,0.86)";
     ctx.fillRect(0, top, W, HUD_H);
     ctx.strokeStyle = C.grid;
     ctx.lineWidth = 1;
@@ -446,12 +447,12 @@
     ctx.lineTo(W, mid);
     ctx.stroke();
 
-    plotLine(traceTh, 60, C.accent, mid, HUD_H * 0.42);
+    plotLine(traceTh, 60, C.accentDeep, mid, HUD_H * 0.42);
     plotLine(traceU, U_MAX, C.blue, mid, HUD_H * 0.42);
 
     ctx.font = "10px ui-monospace, Consolas, monospace";
     ctx.textAlign = "left";
-    ctx.fillStyle = C.accent;
+    ctx.fillStyle = C.accentDeep;
     ctx.fillText("θ [±60°]", 14, top + 14);
     ctx.fillStyle = C.blue;
     ctx.fillText("u [±" + U_MAX + " N]", 80, top + 14);
